@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\Counter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +15,7 @@ class ClientProductController extends Controller
 {
     public function index()
     {
+//        Session::flush();
         $products = DB::table('products')->get();
         return view('/shop/client/products', ['products' => $products]);
     }
@@ -57,14 +59,26 @@ class ClientProductController extends Controller
 
     public function showCart()
     {
+        $totalCost = self::computeTotal();
+        Session::put('totalCost', $totalCost);
+
+        return view('/shop/client/cart', ['products' => Session::get('cart'), 'quantities' => Session::get('quantities'), 'totalCost' => $totalCost]);
+    }
+
+    public function testWire()
+    {
+        return view('/shop/client/testwire');
+    }
+
+    public static function computeTotal()
+    {
         $totalCost = 0;
         $quantities = Session::get('quantities');
         foreach (Session::get('cart') as $index => $value) {
             $totalCost = $totalCost + $value->price * $quantities[$index]['amount'];
         }
-        Session::put('totalCost', $totalCost);
 
-        return view('/shop/client/cart', ['products' => Session::get('cart'), 'quantities' => Session::get('quantities'), 'totalCost' => $totalCost]);
+        return $totalCost;
     }
 }
 

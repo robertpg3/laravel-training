@@ -8,8 +8,12 @@
         <script src="https://js.stripe.com/v3/"></script>
         <script src="{{asset('/js/payment.js')}}"></script>
         <title>Shop</title>
+
+        @livewireStyles
     </head>
     <body>
         @yield('content')
+
+        @livewireScripts
     </body>
 </html>

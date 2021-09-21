@@ -73,3 +73,9 @@ Route::get('/success', [PaymentController::class, 'showSuccess']);
 Route::get('/error', [PaymentController::class, 'showError']);
 Route::get('/order-history', [ClientOrderController::class, 'index']);
 Route::get('/order-history/export/{id}', [ClientOrderController::class, 'exportPDF']);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/wire', [ClientProductController::class, 'testWire']);
