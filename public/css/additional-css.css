@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
+    margin: 0;
 }
 
 .full-height {
@@ -111,6 +112,7 @@
     color: #FFFFFF;
     border-radius: 10px;
     height: 100px;
+    width: 100%;
 }
 
 .cart-div-height {
@@ -128,6 +130,9 @@
 
 .cart-list {
     margin-bottom: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cart-product-pdf {
@@ -157,7 +162,7 @@
     position: absolute;
     bottom: 10px;
     align-self: center;
-    width: 100%;
+    width: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -297,4 +302,22 @@ button {
     flex-direction: row;
     height: 100%;
     align-items: center;
+}
+
+.payment-container {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    min-width: 250px;
+    align-self: center;
+    margin-top: 50px;
+}
+
+.card-input {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#card-button {
+    margin-top: 50px;
 }
