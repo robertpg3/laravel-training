@@ -17,7 +17,6 @@ class CartProducts extends Component
         $this->products = $products;
         $this->quantities = $quantities;
         $this->totalCost = $totalCost;
-
     }
 
     public function render()

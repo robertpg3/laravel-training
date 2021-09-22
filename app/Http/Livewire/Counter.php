@@ -20,6 +20,8 @@ class Counter extends Component
         $this->price = $price;
         $this->index = $index;
         $this->quantities = Session::get('quantities');
+//        dd($this->quantities);
+//        dd($index);
         $this->count = array_column($this->quantities, 'amount')[$index];
     }
 
@@ -47,8 +49,7 @@ class Counter extends Component
         }
         else {
             $cart = Session::get('cart');
-            array_splice($this->quantities, $this->index, 1);
-            array_splice($cart, $this->index, 1);
+            unset($cart[$this->index]);
             Session::forget('cart');
             Session::put('cart', $cart);
         }

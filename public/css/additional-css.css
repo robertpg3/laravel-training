@@ -108,7 +108,8 @@ body {
     width: 80%;
     display: flex;
     flex-direction: column;
-    align-self: center;
+    /*align-self: center;*/
+    /*margin-top: 140px;*/
 }
 
 .cart-product {
@@ -130,7 +131,7 @@ body {
 .cart-list {
     display: flex;
     flex-direction: column;
-    margin-bottom: 200px;
+    /*margin-bottom: 400px;*/
 }
 
 .cart-product-pdf {
@@ -312,16 +313,14 @@ button {
 .cart-modal {
     position: fixed;
     z-index: 999;
-    /*top: 25%;*/
-    /*left: 25%;*/
     margin-top: 50px;
     background-color: rgba(33, 158, 188, 0.8);
-    /*background-color: rgba(2, 48, 71, 0.8);*/
     width: 80%;
     height: 80%;
     border-radius: 10px;
     display: flex;
     justify-content: center;
+    padding: 40px 0px 40px 0px;
 }
 
 .modal-close-button {
@@ -335,3 +334,9 @@ button {
     padding: 10px;
     border-radius: 10px;
 }
+
+.cart-list-nested {
+    overflow-y: auto;
+    height: 45vh;
+}
+
