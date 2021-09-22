@@ -60,7 +60,6 @@ class ClientProductController extends Controller
     public function showCart()
     {
         $totalCost = self::computeTotal();
-        Session::put('totalCost', $totalCost);
 
         return view('/shop/client/cart', ['products' => Session::get('cart'), 'quantities' => Session::get('quantities'), 'totalCost' => $totalCost]);
     }
@@ -74,11 +73,13 @@ class ClientProductController extends Controller
     {
         $totalCost = 0;
         $quantities = Session::get('quantities');
+//        dd(Session::get('quantities'));
         foreach (Session::get('cart') as $index => $value) {
+            dd($index);
             $totalCost = $totalCost + $value->price * $quantities[$index]['amount'];
         }
 
-        return $totalCost;
+        Session::put('totalCost', $totalCost);
     }
 }
 
