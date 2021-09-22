@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
 .background {
     background-color: #DEF0F8;
     display: flex;
@@ -41,6 +46,12 @@
 .product-cart-button:hover {
     color: #fb8500;
     background-color: #023047;
+    cursor: pointer;
+}
+
+.quantity-button:hover {
+    color: #023047;
+    background-color: #fb8500;
     cursor: pointer;
 }
 
@@ -117,6 +128,8 @@
 }
 
 .cart-list {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 200px;
 }
 
@@ -148,7 +161,7 @@
     position: absolute;
     bottom: 10px;
     align-self: center;
-    width: 100%;
+    width: 50%;
 }
 
 .product-container {
@@ -285,4 +298,12 @@ button {
     flex-direction: row;
     height: 100%;
     align-items: center;
+}
+
+.quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+    min-width: 220px;
 }

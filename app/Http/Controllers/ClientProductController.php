@@ -61,7 +61,7 @@ class ClientProductController extends Controller
     {
         $totalCost = self::computeTotal();
 
-        return view('/shop/client/cart', ['products' => Session::get('cart'), 'quantities' => Session::get('quantities'), 'totalCost' => $totalCost]);
+        return view('/shop/client/cart', ['products' => Session::get('cart'), 'quantities' => Session::get('quantities'), 'totalCost' => Session::get('totalCost')]);
     }
 
     public function testWire()
@@ -73,9 +73,7 @@ class ClientProductController extends Controller
     {
         $totalCost = 0;
         $quantities = Session::get('quantities');
-//        dd(Session::get('quantities'));
         foreach (Session::get('cart') as $index => $value) {
-            dd($index);
             $totalCost = $totalCost + $value->price * $quantities[$index]['amount'];
         }
 
