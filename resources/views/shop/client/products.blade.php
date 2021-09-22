@@ -4,12 +4,13 @@
     <div class="round-floating-button order-history-icon-container" onclick="window.location.href='/order-history'">
         <i class="fa fa-history"></i>
     </div>
-    <div class="background">
-        <div class="main-container">
+    <div class="background" x-data="{ showModal: false }">
+        <div class="main-container" >
             @if(\Illuminate\Support\Facades\Session::has('cart'))
-                <div class="round-floating-button cart-icon-container" onclick="window.location.href='/cart'">
-                    <i class="fa fa-shopping-cart"></i>
-                </div>
+{{--                <div class="round-floating-button cart-icon-container" onclick="window.location.href='/cart'">--}}
+{{--                    <i class="fa fa-shopping-cart"></i>--}}
+{{--                </div>--}}
+
             @endif
             <div class="products-container">
                 @foreach($products as $product)
@@ -27,6 +28,15 @@
                     </div>
                 @endforeach
             </div>
+        </div>
+        <div class="round-floating-button cart-icon-container" @click="showModal = true">
+            <i class="fa fa-shopping-cart"></i>
+        </div>
+        <div x-show="showModal" class="cart-modal">
+            <div class="cart-container">
+                @livewire('cart-products', ['products' => Session::get('cart'), 'quantities' => Session::get('quantities'), 'totalCost' => Session::get('totalCost')])
+            </div>
+            <a class="modal-close-button" @click="showModal = false">X</a>
         </div>
     </div>
 @endsection

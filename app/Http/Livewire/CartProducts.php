@@ -27,11 +27,6 @@ class CartProducts extends Component
 
     public function reRenderParent()
     {
-//        $this->mount(Session::get('cart'), Session::get('quantities'), Session::get('totalCost'));
-//        $this->render();
-
-//        dd($this->products);
-
         $this->totalCost = Session::get('totalCost');
         $this->quantities = Session::get('quantities');
         $this->products = Session::get('cart');
