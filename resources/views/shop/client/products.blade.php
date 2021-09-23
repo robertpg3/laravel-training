@@ -19,9 +19,10 @@
                             </div>
                             <p>Price: <b>{{ $product->price }}</b> RON</p>
                         </div>
-                        <div class="product-cart-button" onclick="window.location.href='/add-to-cart/{{ $product->id }}'">
-                            <i class="fa fa-shopping-cart"></i>
-                        </div>
+                        @livewire('added-product', ['productID' => $product->id])
+{{--                        <div class="product-cart-button" onclick="window.location.href='/add-to-cart/{{ $product->id }}'">--}}
+{{--                            <i class="fa fa-shopping-cart"></i>--}}
+{{--                        </div>--}}
                     </div>
                 @endforeach
             </div>

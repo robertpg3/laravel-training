@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        '/v1/webhook_endpoints'
+        '/v1/webhook_endpoints',
+        'livewire/*',
     ];
 }
