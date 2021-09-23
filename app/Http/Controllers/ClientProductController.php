@@ -15,7 +15,7 @@ class ClientProductController extends Controller
 {
     public function index()
     {
-//        Session::flush();
+//        dd(Session::all());
         $products = DB::table('products')->get();
         return view('/shop/client/products', ['products' => $products]);
     }

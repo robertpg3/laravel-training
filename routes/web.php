@@ -9,6 +9,8 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ClientProductController;
 use \App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ClientOrderController;
+use App\Http\Controllers\GuestController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,17 +27,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'login']);
-Route::get('/register', [LoginController::class, 'indexRegister']);
-Route::post('/register', [LoginController::class, 'register']);
-Route::get('/forgot-password', [LoginController::class, 'showForgotPasswordForm']);
-Route::get('/change-password', [LoginController::class, 'resetPassword']);
-Route::post('/forgot-password', [LoginController::class, 'sendPasswordMail'])->name('password.email');
-Route::post('/change-password', [LoginController::class, 'changePassword']);
-Route::post('/reset-password-action', [LoginController::class, 'recoverNewPassword'])->name('password.update');
-Route::get('/reset-password/{token}', [LoginController::class, 'recoverNewPasswordForm'])->name('password.reset');
-Route::get('/confirm-register', [LoginController::class, 'confirmRegister'])->name('verification.verify');
+//Route::get('/login', [LoginController::class, 'index']);
+//Route::post('/login', [LoginController::class, 'login']);
+//Route::get('/register', [LoginController::class, 'indexRegister']);
+//Route::post('/register', [LoginController::class, 'register']);
+//Route::get('/forgot-password', [LoginController::class, 'showForgotPasswordForm']);
+//Route::get('/change-password', [LoginController::class, 'resetPassword']);
+//Route::post('/forgot-password', [LoginController::class, 'sendPasswordMail'])->name('password.email');
+//Route::post('/change-password', [LoginController::class, 'changePassword']);
+//Route::post('/reset-password-action', [LoginController::class, 'recoverNewPassword'])->name('password.update');
+//Route::get('/reset-password/{token}', [LoginController::class, 'recoverNewPasswordForm'])->name('password.reset');
+//Route::get('/confirm-register', [LoginController::class, 'confirmRegister'])->name('verification.verify');
 
 Route::prefix('admin')->group(function() {
     Route::middleware(['myMiddleware'])->group(function() {
@@ -78,4 +80,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/wire', [ClientProductController::class, 'testWire']);
+Route::get('/index', [GuestController::class, 'index']);
+
+Route::get('/login', [GuestController::class, 'indexLogin'])->name('login');
+Route::get('/register', [GuestController::class, 'indexRegister'])->name('register');
+Route::get('/verify-email', [GuestController::class, 'indexVerifyEmail'])->name('verification.send');
+Route::get('/2fa', [GuestController::class, 'index2FA']);
+Route::get('/forgot-password', [GuestController::class, 'indexForgotPassword']);
+
+Route::get('/confirm-password', [AccountController::class, 'indexConfirmPassword']);
+Route::get('/reset-password', [AccountController::class, 'indexResetPassword']);
+Route::get('/logout', [AccountController::class, 'logout']);

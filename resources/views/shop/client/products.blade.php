@@ -1,6 +1,9 @@
 @extends('layouts.client_layout')
 
 @section('content')
+    <div class="round-floating-button logout-icon-container" onclick="window.location.href='/logout'">
+        <i class="fa fa-sign-out"></i>
+    </div>
     <div class="round-floating-button order-history-icon-container" onclick="window.location.href='/order-history'">
         <i class="fa fa-history"></i>
     </div>

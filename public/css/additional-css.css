@@ -217,6 +217,18 @@ body {
     transform: scale(1.05, 1.05);
 }
 
+.logout-icon-container {
+    position: fixed;
+    left: 20px;
+    bottom: 10px;
+    font-size: 30px;
+    transform: scale(-1, 1)
+}
+
+.logout-icon-container:hover {
+    transform: scale(-1.05, 1.05)
+}
+
 .product-title {
     background-color: #023047;
     color: #FFFFFF;
