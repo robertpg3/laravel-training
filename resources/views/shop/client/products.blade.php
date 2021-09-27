@@ -9,7 +9,7 @@
     </div>
     <div class="background">
         <div class="main-container" >
-            @livewire('cart-button')
+            @livewire('cart-container')
             <div class="products-container">
                 @foreach($products as $product)
                     <div class="product-card">
