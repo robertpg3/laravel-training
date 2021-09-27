@@ -27,6 +27,7 @@ class Counter extends Component
 
     public function increment()
     {
+//        dd('INCREMENT');
         if($this->count < 10) {
             $this->count++;
             $this->updateQuantity();
@@ -59,7 +60,8 @@ class Counter extends Component
         Session::save();
         ClientProductController::computeTotal();
 
-        $this->emitUp('reRenderParent');
+        $this->emitUp('updateCartButton');
+//        $this->emitUp('reRenderParent');
     }
 
     public function render()

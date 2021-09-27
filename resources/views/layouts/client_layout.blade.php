@@ -8,6 +8,7 @@
         <script src="https://js.stripe.com/v3/"></script>
         <script defer src="https://unpkg.com/alpinejs@3.3.4/dist/cdn.min.js"></script>
         <script src="{{asset('/js/payment.js')}}"></script>
+        <script src="{{asset('/js/cart.js')}}"></script>
         <title>Shop</title>
 
         @livewireStyles

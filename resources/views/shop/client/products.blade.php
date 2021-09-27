@@ -7,8 +7,9 @@
     <div class="round-floating-button order-history-icon-container" onclick="window.location.href='/order-history'">
         <i class="fa fa-history"></i>
     </div>
-    <div class="background" x-data="{ showModal: false }">
+    <div class="background">
         <div class="main-container" >
+            @livewire('cart-button')
             <div class="products-container">
                 @foreach($products as $product)
                     <div class="product-card">
@@ -20,24 +21,10 @@
                             <p>Price: <b>{{ $product->price }}</b> RON</p>
                         </div>
                         @livewire('added-product', ['productID' => $product->id])
-{{--                        <div class="product-cart-button" onclick="window.location.href='/add-to-cart/{{ $product->id }}'">--}}
-{{--                            <i class="fa fa-shopping-cart"></i>--}}
-{{--                        </div>--}}
                     </div>
                 @endforeach
             </div>
         </div>
-        @if(\Illuminate\Support\Facades\Session::has('cart'))
-            <div class="round-floating-button cart-icon-container" @click="showModal = !showModal" @click.stop>
-                <i class="fa fa-shopping-cart"></i>
-            </div>
-            <div x-show="showModal" class="cart-modal" @click.away="showModal = false">
-                <div class="cart-container">
-                    @livewire('cart-products', ['products' => Session::get('cart'), 'quantities' => Session::get('quantities'), 'totalCost' => Session::get('totalCost')])
-                </div>
-                {{--            <a class="modal-close-button" @click="showModal = false">X</a>--}}
-            </div>
-        @endif
     </div>
 @endsection
 
