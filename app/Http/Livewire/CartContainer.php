@@ -13,8 +13,9 @@ class CartContainer extends Component
     public $totalCost;
     protected $renderCounter = 0;
 
+
     protected $listeners = [
-        'updateCartButton',
+        'updateCartContainer',
         'setShowCart'
     ];
 
@@ -25,12 +26,17 @@ class CartContainer extends Component
         $this->totalCost = Session::get('totalCost');
     }
 
-    public function updateCartButton()
+    public function updateCartContainer()
     {
         $this->renderCounter++;
         $this->totalCost = Session::get('totalCost');
         $this->quantities = Session::get('quantities');
         $this->products = Session::get('cart');
+    }
+
+    public function updateQuantity()
+    {
+
     }
 
     public function setShowCart()

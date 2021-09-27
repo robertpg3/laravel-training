@@ -1,5 +1,8 @@
 $(document).ready(function () {
+    console.log('READY')
+
     $('.cart-icon-container').click(() => {
+        console.log('HERE')
         $('.cart-modal-container').addClass("over")
         if($('.cart-modal').css('display') == 'none') {
             $('.cart-modal-container').removeClass("over")
@@ -17,3 +20,6 @@ $(document).ready(function () {
         $('.cart-modal-container').removeClass("over")
     })
 })
+
+
+

@@ -1,5 +1,4 @@
 <div class="cart-modal-container {{ $over }}" x-data="{ showModal: false }">
-
     @if($hasCartProducts)
         <div class="round-floating-button cart-icon-container" @click="showModal = !showModal" @click.stop>
             <i class="fa fa-shopping-cart"></i>

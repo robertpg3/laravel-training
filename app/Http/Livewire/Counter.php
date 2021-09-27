@@ -60,7 +60,7 @@ class Counter extends Component
         Session::save();
         ClientProductController::computeTotal();
 
-        $this->emitUp('updateCartButton');
+        $this->emitUp('updateCartContainer');
 //        $this->emitUp('reRenderParent');
     }
 
