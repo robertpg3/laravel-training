@@ -12,11 +12,12 @@ class CartContainer extends Component
     public $quantities;
     public $totalCost;
     protected $renderCounter = 0;
-
+    protected $over = '';
 
     protected $listeners = [
         'updateCartContainer',
-        'setShowCart'
+        'setShowCart',
+        'updateQuantity'
     ];
 
     public function mount()
@@ -36,27 +37,42 @@ class CartContainer extends Component
 
     public function updateQuantity()
     {
-
+        $this->updateCartContainer();
+        $this->over = 'over';
     }
 
     public function setShowCart()
     {
+//        $this->over = 'over';
         $this->hasCartProducts = true;
+    }
+
+    public function display()
+    {
+//        dd('HERE');
+        $this->over = 'over';
     }
 
     public function render()
     {
+//        var_dump($this->renderCounter);
         if (Session::has('cart')) {
             $this->hasCartProducts = true;
         } else {
             $this->hasCartProducts = false;
         }
+//        dd($this->renderCounter);
+        return view('livewire.cart-container', ['over' => $this->over]);
 
-        if ($this->renderCounter == 0) {
+        if ($this->renderCounter == 0 || $this->renderCounter > 1) {
             $this->renderCounter++;
-            return view('livewire.cart-container', ['over' => '']);
-        } else {
-            return view('livewire.cart-container', ['over' => 'over']);
+//            var_dump($this->renderCounter);
+
+//        } elseif ($this->renderCounter == 1) {
+//            echo 'second if';
+//            $this->renderCounter += 2;
+//            return view('livewire.cart-container', ['over' => 'over']);
+//        }
         }
     }
 }
