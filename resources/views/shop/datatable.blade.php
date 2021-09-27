@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.datatable_layout')
 
 @section('content')
     {{$dataTable->table()}}

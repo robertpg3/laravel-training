@@ -91,3 +91,4 @@ Route::get('/forgot-password', [GuestController::class, 'indexForgotPassword']);
 Route::get('/confirm-password', [AccountController::class, 'indexConfirmPassword']);
 Route::get('/reset-password', [AccountController::class, 'indexResetPassword']);
 Route::get('/logout', [AccountController::class, 'logout']);
+Route::get('/check-role', [AccountController::class, 'checkRole']);

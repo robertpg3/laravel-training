@@ -27,4 +27,13 @@ class AccountController extends Controller
 
         return redirect('/index');
     }
+
+    public function checkRole()
+    {
+        if (Auth::user()->role == 'admin') {
+            return redirect('admin/products');
+        } else if (Auth::user()->role == 'client') {
+            return redirect('/products');
+        }
+    }
 }
