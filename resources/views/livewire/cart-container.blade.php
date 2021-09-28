@@ -1,6 +1,6 @@
-<div class="cart-modal-container {{ $over }}" x-data="{ showModal: false }">
+<div class="cart-modal-container" x-data="{ showModal: false }">
     @if($hasCartProducts)
-        <div class="round-floating-button cart-icon-container" wire:click="display()" @click="showModal = !showModal" @click.stop>
+        <div class="round-floating-button cart-icon-container" @click="showModal = !showModal" @click.stop>
             <i class="fa fa-shopping-cart"></i>
         </div>
         <div x-show="showModal" class="cart-modal"  id="cart-modal-id" @click.away="showModal = false">
@@ -8,7 +8,7 @@
                 <div class="cart-list">
                     <div class="cart-list-nested">
                         @foreach($products as $index => $value)
-                            @livewire('counter', ['index' => $index, 'name' => $value->name, 'price' => $value->price], key($index))
+                            @livewire('counter', ['quantities' => $quantities, 'index' => $index, 'name' => $value->name, 'price' => $value->price], key($index))
                         @endforeach
                     </div>
 

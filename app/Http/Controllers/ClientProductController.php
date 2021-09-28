@@ -59,8 +59,6 @@ class ClientProductController extends Controller
 
     public function showCart()
     {
-        $totalCost = self::computeTotal();
-
         return view('/shop/client/cart', ['products' => Session::get('cart'), 'quantities' => Session::get('quantities'), 'totalCost' => Session::get('totalCost')]);
     }
 

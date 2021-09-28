@@ -14,12 +14,12 @@ class Counter extends Component
     public $name;
     public $price;
 
-    public function mount($index, $name, $price)
+    public function mount($quantities, $index, $name, $price)
     {
         $this->name = $name;
         $this->price = $price;
         $this->index = $index;
-        $this->quantities = Session::get('quantities');
+        $this->quantities = $quantities;
 //        dd($this->quantities);
 //        dd($index);
         $this->count = array_column($this->quantities, 'amount')[$index];
@@ -60,8 +60,7 @@ class Counter extends Component
         Session::save();
         ClientProductController::computeTotal();
 
-        $this->emitUp('updateQuantity');
-//        $this->emitUp('reRenderParent');
+        $this->emitUp('updateCartContainer');
     }
 
     public function render()

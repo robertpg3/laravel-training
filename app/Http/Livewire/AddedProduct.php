@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\ClientProductController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
@@ -33,7 +34,6 @@ class AddedProduct extends Component
                     $quantity['amount']++;
                 }
             }
-
             Session::forget('quantities');
             Session::put('quantities', $qnts);
         } else {
@@ -41,12 +41,12 @@ class AddedProduct extends Component
             $quantity = array('id' => $this->productID, 'amount' => 1);
             Session::push('quantities', $quantity);
         }
+        ClientProductController::computeTotal();
 
         Session::save();
 
         $this->emit('updateCartContainer');
         $this->emit('setShowCart');
-//        dd(Session::all());
     }
 
     public function render()
