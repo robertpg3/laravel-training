@@ -37,8 +37,8 @@ class CartContainer extends Component
 
     public function updateQuantity()
     {
-        $this->updateCartContainer();
         $this->over = 'over';
+        $this->updateCartContainer();
     }
 
     public function setShowCart()
